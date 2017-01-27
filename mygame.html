@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<head>
+<title>tictactoe game</title>
+<style>
+table, th, td {
+    border: 1px solid green;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 40px;
+    text-align: center;
+    background-color:aqua;
+}
+#p1{
+
+float:left;
+//border: 2px solid black;
+width:400px;
+height:450px;
+}
+#game{
+float:left;
+//border: 2px solid black;
+height:450px;
+width:500px;
+}
+#p2{
+float:left;
+//border: 2px solid black;
+height:450px;
+width:350px;
+}
+#ip{
+clear:both;
+float:left;
+//border: 2px solid black;
+}
+</style>
+
+<script type="text/javascript">
+		 var flag = 0;
+		 var count = 0;
+		 var track = new Array(10);
+                function myfunction()
+                {
+                    if(flag==0)
+                    document.getElementById("b2").disabled = true;
+                    else
+                    document.getElementById("b1").disabled = false;
+                }
+		function execute()
+		{
+			//var input = prompt("Enter the value(1-9)","");
+			//if(track[input]==1 || track[input]==2)
+				//alert("Input already entered.Try Again");
+			if(flag == 0)
+			{       var input= document.getElementById("p1i").value;
+                                document.getElementById("p1i").value="";
+                                if(track[input]==1 || track[input]==2)
+				{alert("Input already entered.Try Again");
+                                 return;}
+				flag = 1;
+				track[input]=1;
+				document.getElementById(input).style.backgroundColor = "pink";
+document.getElementById("b1").disabled = true;
+document.getElementById("b2").disabled = false;
+			}
+
+			else if(flag == 1)
+			{       
+                                 var input= document.getElementById("p2i").value;
+                                 document.getElementById("p2i").value="";
+                                if(track[input]==1 || track[input]==2)
+				{alert("Input already entered.Try Again");
+                                 return;}
+				flag = 0;
+				track[input]=2;
+				document.getElementById(input).style.backgroundColor = "#ff0000";
+                                   document.getElementById("b1").disabled = false;
+document.getElementById("b2").disabled = true;
+			}
+			count++;
+			for(var k=1;k<10;k+=3)
+			{
+				if(track[k]==1 && track[k+1]==1 && track[k+2]==1)
+				{
+					alert("Player-1 wins");
+					location.reload();
+					return;
+				}
+				else if(track[k]==2 && track[k+1]==2 && track[k+2]==2)
+					{
+						alert("Player-2 wins");
+						location.reload();
+						return;
+					}
+			}
+		
+			if(track[1]==1 && track[5]==1 && track[9]==1 || track[1]==1 && track[4]==1 && track[7]==1 || track[2]==1 && track[5]==1 && track[8]==1 || track[3]==1 && track[6]==1 && track[9]==1)
+				{
+					alert("Player-1 wins");
+					location.reload();
+					return;
+				}
+			else if(track[1]==2 && track[5]==2 && track[9]==2 || track[1]==2 && track[4]==2 && track[7]==2 || track[2]==2 && track[5]==2 && track[8]==2 || track[3]==2 && track[6]==2 && track[9]==2)
+				{
+					alert("Player-2 wins");
+					location.reload();
+					return;
+				}
+			if(track[3]==1 && track[5]==1 && track[7]==1)
+				{	
+					alert("Player-1 wins");
+					location.reload();
+					return;
+				}
+			else if(track[3]==2 && track[5]==2 && track[7]==2)
+				{
+					alert("Player-2 wins");
+					location.reload();
+					return;
+				}
+			if(count==9)
+			{
+				alert("DRAW");
+				location.reload();
+				return;
+			}
+                  
+                      /*  if(flag==0)
+                    document.getElementById("b2").disabled = true;
+                     document.getElementById("b1").disabled = false;
+                    else
+                    document.getElementById("b1").disabled = true;
+                     document.getElementById("b2").disabled = false;*/
+		}
+		
+	</script>
+
+</head>
+
+<body onload="myfunction()">
+<div id="p1">
+<h2>PLAYER 1</h2>
+<br>
+<br>
+INPUT:<input type="number" id="p1i" ><button id="b1" onclick="execute()">OK</button>
+<br>
+</div>
+
+</div>
+<div id="game">
+<h1 style="text-align:center;color:red">TIC TAC TOE</h1>
+<br>
+<br>
+<table style="margin:auto">
+<tr>
+<td id="1">1</td>
+<td id="2">2</td>
+<td id="3">3</td>
+</tr>
+<tr>
+<td id="4">4</td>
+<td id="5">5</td>
+<td id="6">6</td>
+</tr>
+<tr>
+<td id="7">7</td>
+<td id="8">8</td>
+<td id="9">9</td>
+</tr>
+</table>
+</div>
+<br>
+<div id="p2">
+<h2>PLAYER 2</h2>
+<br>
+<br>
+INPUT:<input type="number" id="p2i" ><button  id="b2" onclick="execute()">OK</button>
+<br>
+</div>
+<br>
+
+
+</body>
+</html>
